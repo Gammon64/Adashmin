@@ -1,7 +1,8 @@
 /**
  * Inicializa o servidor Express.Js
  */
-import app from "./app";
+import app from "./libs/app";
+import "./libs/db";
 
 const port = 3000;
 app.listen(port, () => {
