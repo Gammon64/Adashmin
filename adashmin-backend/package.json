@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --env-file=.env src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node index.js"
   },
   "author": "Gammon64",
   "license": "MIT",
