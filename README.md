@@ -1,8 +1,12 @@
 # Adashmin
 
+Boas vindas ao Adashmin! Projeto fullstack de gerenciamento de funcionários.
+
+# Backend:
+
 ## Como iniciar
 
-Após iniciar o projeto, execute o comando `npm install` para instalar as dependências do projeto.
+Após clonar o projeto, execute o comando `npm install` para instalar as dependências do projeto.
 
 ### MongoDB
 
@@ -22,9 +26,21 @@ DB_NAME="adashmin"
 
 Comandos disponíveis:
 
-- `npm run dev`: inicia o servidor em modo **desenvolvedor**, reinicia ao aplicar alterações no código.
-- `npm run build`: compila o projeto em JavaScript na pasta **dist**.
-- `npm start`: inicia o servidor em modo **produção** a partir do projeto compilado na pasta **dist**.
+- `dev`: inicia o servidor em modo **desenvolvedor**, reinicia ao aplicar alterações no código.
+- `build`: compila o projeto em JavaScript na pasta **dist**.
+- `start`: inicia o servidor em modo **produção** a partir do projeto compilado na pasta **dist**.
+
+Uso:
+
+```bash
+npm run [comando]
+# or
+yarn [comando]
+# or
+pnpm [comando]
+# or
+bun [comando]
+```
 
 ## Endpoints disponíveis
 
@@ -33,3 +49,33 @@ Comandos disponíveis:
 - `/api/funcionarios`: Cria um novo funcionário com base nos dados fornecidos no corpo da requisição.
 - `/api/funcionarios/:id`: Atualiza as informações de um funcionário específico com base no ID fornecido e nos dados fornecidos no corpo da requisição.
 - `/api/funcionarios/:id`: Exclui um funcionário específico com base no ID fornecido.
+
+# Frontend:
+
+## Como iniciar
+
+Após clonar o projeto, execute o comando `npm install` para instalar as dependências do projeto.
+
+### Pronto para rodar
+
+Comandos disponíveis:
+
+- `dev`: inicia o servidor em modo **desenvolvedor**, reinicia ao aplicar alterações no código.
+- `build`: compila o projeto em JavaScript na pasta **dist**.
+- `start`: inicia o servidor em modo **produção** a partir do projeto compilado na pasta **dist**.
+
+Uso:
+
+```bash
+npm run [comando]
+# or
+yarn [comando]
+# or
+pnpm [comando]
+# or
+bun [comando]
+```
+
+### Acesso
+
+Após iniciar o projeto acesse seu [ambiente local](http://localhost:3000) para visualizar.
