@@ -5,9 +5,11 @@ import { Button, Input, InputGroup, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { salvar } from "../actions";
+import { useRouter } from "next/navigation";
 
 const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
   const toast = useToast();
+  const router = useRouter();
   const {
     register,
     reset,
@@ -29,14 +31,15 @@ const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
     // O HandleSubmit do React-Hook-Form valida os valores do formulário e retorna-os em um objeto data
     handleSubmit((data) => {
       salvar(data, funcionario?._id)
-        .then(() =>
+        .then(() => {
           toast({
             title: "Sucesso!",
             description: "Funcionário salvo",
             status: "success",
             isClosable: true,
-          })
-        )
+          });
+          router.push("/");
+        })
         .catch((error) =>
           toast({
             title: "Erro!",

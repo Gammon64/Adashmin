@@ -22,14 +22,17 @@ const DataTable = ({ data }: { data: Funcionario[] }) => {
 
   const onDelete = async (id: string) => {
     deletar(id)
-      .then(() =>
+      .then(() => {
         toast({
           title: "Sucesso!",
           description: "Funcionário excluído",
           status: "success",
           isClosable: true,
-        })
-      )
+        });
+        setFuncionarios(
+          funcionarios.filter((funcionario) => funcionario._id !== id)
+        );
+      })
       .catch((error) =>
         toast({
           title: "Erro!",
