@@ -11,9 +11,6 @@ export type Funcionario = {
 async function getData() {
   const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/employees", {
     method: "GET",
-    next: {
-      revalidate: 180,
-    },
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");

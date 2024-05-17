@@ -1,4 +1,5 @@
 "use client";
+import { deletar } from "@/app/funcionario/actions";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
 import {
@@ -9,6 +10,7 @@ import {
   Th,
   Thead,
   Tr,
+  useToast,
 } from "@chakra-ui/react";
 import { CSSProperties } from "react";
 import { Funcionario } from ".";
@@ -25,9 +27,13 @@ const iconButtonStyle: CSSProperties = {
 };
 
 const DataTable = ({ data }: { data: Funcionario[] }) => {
+  const toast = useToast();
+
   const onDelete = async (id: string) => {
-    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/employees/" + id, {
-      method: "DELETE",
+    toast.promise(deletar(id), {
+      success: { title: "Sucesso!", description: "Funcionário salvo" },
+      error: { title: "Erro!", description: "Funcionário não foi salvo" },
+      loading: { title: "Enviando...", description: "Aguarde um momento" },
     });
   };
 

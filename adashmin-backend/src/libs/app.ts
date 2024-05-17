@@ -9,10 +9,15 @@ import cors from "cors";
 const app = express();
 
 // Configuração do CORS
-const whitelist = ["http://localhost:3000", "https://vercel.com"];
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://vercel.com",
+];
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
-    if (origin && whitelist.includes(origin)) {
+    console.log("🚀 ~ origin:", origin);
+    if (!origin || whitelist.includes(origin)) {
       callback(null, true);
     } else callback(new Error("Not allowed by CORS"));
   },
