@@ -1,10 +1,18 @@
+import FindInput from "./_components/FindInput";
+import ListEmployee from "./_components/ListEmployee";
+import NewButton from "./_components/NewButton";
 import style from "./page.module.css";
 
 export default function Home() {
   return (
     <main className={style.main}>
-      <h1>Adashmin</h1>
-      <p>Gerenciamento de funcionários</p>
+      <section className={style.actions}>
+        <NewButton />
+        <FindInput />
+      </section>
+      <section>
+        <ListEmployee />
+      </section>
     </main>
   );
 }
