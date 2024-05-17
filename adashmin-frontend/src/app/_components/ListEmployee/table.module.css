@@ -1,0 +1,10 @@
+.dataTable {
+  width: 100%;
+  margin: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .dataTable {
+    width: 100vw;
+  }
+}

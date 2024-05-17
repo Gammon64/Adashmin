@@ -10,6 +10,7 @@ export default function Home({
 }) {
   return (
     <main className={style.main}>
+      <h1>Gerenciamento de funcionários</h1>
       <section className={style.actions}>
         <NewButton />
         <FindInput query={searchParams?.query} />

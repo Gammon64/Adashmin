@@ -7,12 +7,16 @@ import DataTable from "./DataTable";
  * @returns
  */
 async function getData(query: string | undefined) {
+  // Faz a requisição para o backend, passando a query como parâmetro se existir
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/employees?query=${query}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/employees${
+      query ? "?query=" + query : ""
+    }`,
     {
       method: "GET",
     }
   );
+
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

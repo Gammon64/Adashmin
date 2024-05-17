@@ -17,3 +17,10 @@ h1 {
   font-weight: 700;
   margin-bottom: 1rem;
 }
+
+@media only screen and (max-width: 800px) {
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
