@@ -1,17 +1,18 @@
 import DataTable from "./DataTable";
 
-export type Funcionario = {
-  _id: string;
-  nome: string;
-  cargo: string;
-  departamento: string;
-  dataAdmissao: Date;
-};
-
-async function getData() {
-  const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/employees", {
-    method: "GET",
-  });
+/**
+ * Lista todos os funcionários.
+ * Caso haja query, lista todos os funcionários que contém a query.
+ * @param query valor a ser filtrado
+ * @returns
+ */
+async function getData(query: string | undefined) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/employees?query=${query}`,
+    {
+      method: "GET",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -19,13 +20,9 @@ async function getData() {
   return res.json();
 }
 
-const ListEmployee = async () => {
-  const data = await getData();
-  return (
-    <div>
-      <DataTable data={data} />
-    </div>
-  );
+const ListEmployee = async ({ query }: { query: string | undefined }) => {
+  const data = await getData(query);
+  return <DataTable data={data} />;
 };
 
 export default ListEmployee;

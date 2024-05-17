@@ -3,7 +3,7 @@ import { Button, Input, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { salvar } from "../funcionario/actions";
-import { Funcionario } from "./ListEmployee";
+import { Funcionario } from "@/app/_types/funcionario";
 
 const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
   const toast = useToast();

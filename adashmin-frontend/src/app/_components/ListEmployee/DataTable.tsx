@@ -1,4 +1,5 @@
 "use client";
+import { Funcionario } from "@/app/_types/funcionario";
 import { deletar } from "@/app/funcionario/actions";
 import { DeleteIcon, EditIcon, UpDownIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
@@ -13,7 +14,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { CSSProperties, useState } from "react";
-import { Funcionario } from ".";
 
 const DataTable = ({ data }: { data: Funcionario[] }) => {
   const [funcionarios, setFuncionarios] = useState<Funcionario[]>(data);

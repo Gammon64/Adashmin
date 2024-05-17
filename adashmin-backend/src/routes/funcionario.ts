@@ -8,7 +8,14 @@ const funcionario_route = Router();
 
 funcionario_route.get("/employees", async (req, res) => {
   try {
-    const funcionarios = await FuncionarioModel.find();
+    const query = req.query.query;
+    const funcionarios = await FuncionarioModel.find({
+      $or: [
+        { nome: { $regex: ".*" + query + ".*", $options: "i" } },
+        { cargo: { $regex: ".*" + query + ".*", $options: "i" } },
+        { departamento: { $regex: ".*" + query + ".*", $options: "i" } },
+      ],
+    });
     res.send(funcionarios);
   } catch (error) {
     console.error(error);
