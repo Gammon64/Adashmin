@@ -1,9 +1,9 @@
 "use client";
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { salvar } from "../funcionario/actions";
 import { Funcionario } from "./ListEmployee";
-import { useToast } from "@chakra-ui/react";
 
 const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
   const toast = useToast();
@@ -20,23 +20,13 @@ const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
    */
   const onSave = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // O HandleSubmit do React-Hook-Form compila os valores do formulário em um objeto data
     method.handleSubmit((data) => {
-      toast.promise(
-        fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/employees/${
-            funcionario?._id ?? ""
-          }`,
-          {
-            method: "POST",
-            body: JSON.stringify(data),
-          }
-        ),
-        {
-          success: { title: "Sucesso!", description: "Funcionário salvo" },
-          error: { title: "Erro!", description: "Funcionário não foi salvo" },
-          loading: { title: "Enviando...", description: "Aguarde um momento" },
-        }
-      );
+      toast.promise(salvar(data, funcionario?._id), {
+        success: { title: "Sucesso!", description: "Funcionário salvo" },
+        error: { title: "Erro!", description: "Funcionário não foi salvo" },
+        loading: { title: "Enviando...", description: "Aguarde um momento" },
+      });
     })();
   };
 
@@ -71,6 +61,7 @@ const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
         placeholder="Data de admissão"
         {...method.register("dataAdmissao", {
           required: true,
+          valueAsDate: true,
         })}
         type="datetime-local"
       />
