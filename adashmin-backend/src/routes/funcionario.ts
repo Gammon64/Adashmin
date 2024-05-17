@@ -9,13 +9,15 @@ const funcionario_route = Router();
 funcionario_route.get("/employees", async (req, res) => {
   try {
     const query = req.query.query;
-    const funcionarios = await FuncionarioModel.find({
+    const filter = {
       $or: [
         { nome: { $regex: ".*" + query + ".*", $options: "i" } },
         { cargo: { $regex: ".*" + query + ".*", $options: "i" } },
         { departamento: { $regex: ".*" + query + ".*", $options: "i" } },
       ],
-    });
+    };
+    // Se query não for indefinida, aplico o filtro, se não, retorno todos os funcionários
+    const funcionarios = await FuncionarioModel.find(query ? filter : {});
     res.send(funcionarios);
   } catch (error) {
     console.error(error);
