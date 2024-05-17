@@ -5,6 +5,7 @@ import FuncionarioModel from "../model/funcionario";
  * Endpoints para operaćões CRUD de funcionários
  */
 const funcionario_route = Router();
+
 /**
  * Busca todos os funcionários.
  * Se houver query, filtra por nome, cargo ou departamento.
@@ -12,6 +13,7 @@ const funcionario_route = Router();
 funcionario_route.get("/employees", async (req, res) => {
   try {
     const query = req.query.query;
+    // Busca se contém o texto em nome, cargo ou departamento.
     const filter = {
       $or: [
         { nome: { $regex: ".*" + query + ".*", $options: "i" } },
@@ -47,13 +49,12 @@ funcionario_route.get("/employees/:id", async (req, res) => {
 funcionario_route.post("/employees", async (req, res) => {
   try {
     // Pega o body da requisição e cria um novo funcionário
-    console.log("🚀 ~ funcionario_route.post ~ req.body:", req.body);
     const funcionario = new FuncionarioModel(req.body);
     await funcionario.save();
     res.send(funcionario);
   } catch (error: any) {
     console.error(error);
-    if (error.name === "ValidationError")
+    if (error.name === "ValidationError" || error.name === "CastError")
       res.status(400).send("Dados inválidos: " + error.message);
     else res.status(500).send("Erro interno ao criar funcionário");
   }

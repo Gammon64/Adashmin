@@ -22,10 +22,12 @@ const corsOptions: cors.CorsOptions = {
   },
 };
 
+// Configuração do Express.js
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use("/", funcionario_route);
 
+// Rota de boas vindas
 app.get("/", (req, res) => {
   res.send("Boas vindas à API Adashmin!");
 });
