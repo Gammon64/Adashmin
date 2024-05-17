@@ -4,5 +4,10 @@
   align-items: center;
   justify-content: start;
   margin-top: 20px;
-  height: 100vh;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
 }
