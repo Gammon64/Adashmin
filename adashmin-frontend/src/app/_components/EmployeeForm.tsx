@@ -13,7 +13,7 @@ const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
     if (funcionario) {
       method.reset(funcionario);
     }
-  }, [funcionario]);
+  }, [funcionario, method]);
 
   /**
    * Envia o funcionário para o backend
