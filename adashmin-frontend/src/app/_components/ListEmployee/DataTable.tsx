@@ -15,17 +15,6 @@ import {
 import { CSSProperties, useState } from "react";
 import { Funcionario } from ".";
 
-const iconButtonStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "30px",
-  height: "30px",
-  backgroundColor: "purple",
-  color: "white",
-  borderRadius: "50%",
-};
-
 const DataTable = ({ data }: { data: Funcionario[] }) => {
   const [funcionarios, setFuncionarios] = useState<Funcionario[]>(data);
   const toast = useToast();
@@ -38,6 +27,10 @@ const DataTable = ({ data }: { data: Funcionario[] }) => {
     });
   };
 
+  /**
+   * Ordena a tabela de funcionários
+   * @param key Campo a ser ordenado
+   */
   const onSort = (key: keyof Funcionario) => {
     console.log("🚀 ~ onSort ~ key:", key);
     const sorted = [...funcionarios].sort((a, b) => {
@@ -49,11 +42,23 @@ const DataTable = ({ data }: { data: Funcionario[] }) => {
     setFuncionarios(sorted);
   };
 
+  // Styles reutilizados
   const sortIconStyle: CSSProperties = {
     cursor: "pointer",
     width: "20px",
     height: "20px",
     marginLeft: "0.5rem",
+  };
+
+  const iconButtonStyle: CSSProperties = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "30px",
+    height: "30px",
+    backgroundColor: "purple",
+    color: "white",
+    borderRadius: "50%",
   };
 
   return (
