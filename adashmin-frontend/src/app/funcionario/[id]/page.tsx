@@ -1,4 +1,5 @@
 import EmployeeForm from "@/app/_components/EmployeeForm";
+import { buildFuncionario } from "@/app/_types/funcionario";
 
 const getData = async (id: string) => {
   const res = await fetch(
@@ -11,7 +12,9 @@ const getData = async (id: string) => {
     throw new Error("Failed to fetch data");
   }
 
-  return res.json();
+  // Garante que o dado retornado tenha o tipo Funcionario
+  const funcionario = buildFuncionario(await res.json());
+  return funcionario;
 };
 
 const CadastroFuncionario = async ({ params }: { params: { id: string } }) => {

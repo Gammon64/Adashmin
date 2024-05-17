@@ -14,6 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { CSSProperties, useState } from "react";
+import style from "./table.module.css";
 
 const DataTable = ({ data }: { data: Funcionario[] }) => {
   const [funcionarios, setFuncionarios] = useState<Funcionario[]>(data);
@@ -32,13 +33,11 @@ const DataTable = ({ data }: { data: Funcionario[] }) => {
    * @param key Campo a ser ordenado
    */
   const onSort = (key: keyof Funcionario) => {
-    console.log("🚀 ~ onSort ~ key:", key);
     const sorted = [...funcionarios].sort((a, b) => {
       if (a[key] < b[key]) return -1;
       if (a[key] > b[key]) return 1;
       return 0;
     });
-    console.log("🚀 ~ sorted ~ sorted:", sorted);
     setFuncionarios(sorted);
   };
 
@@ -62,66 +61,64 @@ const DataTable = ({ data }: { data: Funcionario[] }) => {
   };
 
   return (
-    <div>
-      <TableContainer>
-        <Table variant="striped">
-          <Thead>
-            <Tr>
-              <Th>
-                Nome
-                <UpDownIcon
-                  onClick={() => onSort("nome")}
-                  style={sortIconStyle}
-                />
-              </Th>
-              <Th>
-                Cargo
-                <UpDownIcon
-                  onClick={() => onSort("cargo")}
-                  style={sortIconStyle}
-                />
-              </Th>
-              <Th>
-                Departamento
-                <UpDownIcon
-                  onClick={() => onSort("departamento")}
-                  style={sortIconStyle}
-                />
-              </Th>
-              <Th>Ações</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {funcionarios.map((funcionario) => (
-              <Tr key={funcionario._id}>
-                <Td>{funcionario.nome}</Td>
-                <Td>{funcionario.cargo}</Td>
-                <Td>{funcionario.departamento}</Td>
-                <Td
-                  style={{
-                    display: "flex",
-                    gap: "0.5rem",
-                  }}
+    <TableContainer className={style.dataTable}>
+      <Table variant="striped">
+        <Thead>
+          <Tr>
+            <Th>
+              Nome
+              <UpDownIcon
+                onClick={() => onSort("nome")}
+                style={sortIconStyle}
+              />
+            </Th>
+            <Th>
+              Cargo
+              <UpDownIcon
+                onClick={() => onSort("cargo")}
+                style={sortIconStyle}
+              />
+            </Th>
+            <Th>
+              Departamento
+              <UpDownIcon
+                onClick={() => onSort("departamento")}
+                style={sortIconStyle}
+              />
+            </Th>
+            <Th>Ações</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {funcionarios.map((funcionario) => (
+            <Tr key={funcionario._id}>
+              <Td>{funcionario.nome}</Td>
+              <Td>{funcionario.cargo}</Td>
+              <Td>{funcionario.departamento}</Td>
+              <Td
+                style={{
+                  display: "flex",
+                  gap: "0.5rem",
+                }}
+              >
+                <Link
+                  href={`funcionario/${funcionario._id}`}
+                  style={iconButtonStyle}
                 >
-                  <Link
-                    href={`funcionario/${funcionario._id}`}
-                    style={iconButtonStyle}
-                  >
-                    <EditIcon />
-                  </Link>
-                  <button
-                    style={iconButtonStyle}
-                    onClick={() => onDelete(funcionario._id)}
-                  >
-                    <DeleteIcon />
-                  </button>
-                </Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
-    </div>
+                  <EditIcon />
+                </Link>
+                <button
+                  style={iconButtonStyle}
+                  onClick={() => onDelete(funcionario._id)}
+                >
+                  <DeleteIcon />
+                </button>
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </TableContainer>
   );
 };
 

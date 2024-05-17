@@ -1,33 +1,50 @@
 "use client";
-import { Button, Input, useToast } from "@chakra-ui/react";
+import { Funcionario } from "@/app/_types/funcionario";
+import { Link } from "@chakra-ui/next-js";
+import { Button, Input, InputGroup, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { salvar } from "../funcionario/actions";
-import { Funcionario } from "@/app/_types/funcionario";
 
 const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
   const toast = useToast();
-  const method = useForm();
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     if (funcionario) {
-      method.reset(funcionario);
+      reset(funcionario);
     }
-  }, [funcionario, method]);
+  }, [funcionario, reset]);
 
   /**
    * Envia o funcionário para o backend
    */
   const onSave = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // O HandleSubmit do React-Hook-Form compila os valores do formulário em um objeto data
-    method.handleSubmit((data) => {
+    // O HandleSubmit do React-Hook-Form valida os valores do formulário e retorna-os em um objeto data
+    handleSubmit((data) => {
       toast.promise(salvar(data, funcionario?._id), {
         success: { title: "Sucesso!", description: "Funcionário salvo" },
         error: { title: "Erro!", description: "Funcionário não foi salvo" },
         loading: { title: "Enviando...", description: "Aguarde um momento" },
       });
     })();
+  };
+
+  // Styles reutilizados
+  const inputGroupStyle: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+  };
+
+  const spanStyle: React.CSSProperties = {
+    color: "red",
+    fontSize: "0.75rem",
   };
 
   return (
@@ -39,35 +56,66 @@ const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
         gap: "1rem",
       }}
     >
-      <Input
-        placeholder="Nome"
-        {...method.register("nome", {
-          required: true,
-        })}
-      />
-      <Input
-        placeholder="Cargo"
-        {...method.register("cargo", {
-          required: true,
-        })}
-      />
-      <Input
-        placeholder="Departamento"
-        {...method.register("departamento", {
-          required: true,
-        })}
-      />
-      <Input
-        placeholder="Data de admissão"
-        {...method.register("dataAdmissao", {
-          required: true,
-          valueAsDate: true,
-        })}
-        type="datetime-local"
-      />
-      <Button variant="ghost" type="submit">
-        Salvar
-      </Button>
+      <InputGroup style={inputGroupStyle}>
+        <Input
+          placeholder="Nome"
+          {...register("nome", {
+            required: true,
+          })}
+        />
+        {errors.nome && <span style={spanStyle}>Este campo é obrigatório</span>}
+      </InputGroup>
+      <InputGroup style={inputGroupStyle}>
+        <Input
+          placeholder="Cargo"
+          {...register("cargo", {
+            required: true,
+          })}
+        />
+        {errors.cargo && (
+          <span style={spanStyle}>Este campo é obrigatório</span>
+        )}
+      </InputGroup>
+      <InputGroup style={inputGroupStyle}>
+        <Input
+          placeholder="Departamento"
+          {...register("departamento", {
+            required: true,
+          })}
+        />
+        {errors.departamento && (
+          <span style={spanStyle}>Este campo é obrigatório</span>
+        )}
+      </InputGroup>
+
+      <InputGroup style={inputGroupStyle}>
+        <Input
+          placeholder="Data de admissão"
+          {...register("dataAdmissao", {
+            required: true,
+            valueAsDate: true,
+          })}
+          type="date"
+        />
+        {errors.dataAdmissao && (
+          <span style={spanStyle}>Este campo é obrigatório</span>
+        )}
+      </InputGroup>
+
+      <footer
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "1rem",
+        }}
+      >
+        <Link href="/">
+          <Button colorScheme="pink">Cancelar</Button>
+        </Link>
+        <Button variant="ghost" type="submit">
+          Salvar
+        </Button>
+      </footer>
     </form>
   );
 };
