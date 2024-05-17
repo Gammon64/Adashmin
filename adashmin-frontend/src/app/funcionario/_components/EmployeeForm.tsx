@@ -4,7 +4,7 @@ import { Link } from "@chakra-ui/next-js";
 import { Button, Input, InputGroup, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { salvar } from "../funcionario/actions";
+import { salvar } from "../actions";
 
 const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
   const toast = useToast();

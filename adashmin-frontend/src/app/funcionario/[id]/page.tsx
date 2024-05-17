@@ -1,5 +1,5 @@
-import EmployeeForm from "@/app/_components/EmployeeForm";
 import { buildFuncionario } from "@/app/_types/funcionario";
+import EmployeeForm from "@/app/funcionario/_components/EmployeeForm";
 
 const getData = async (id: string) => {
   const res = await fetch(
