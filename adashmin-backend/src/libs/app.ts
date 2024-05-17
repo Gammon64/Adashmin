@@ -4,8 +4,21 @@
 import express from "express";
 import funcionario_route from "../routes/funcionario";
 import bodyParser from "body-parser";
+import cors from "cors";
+
 const app = express();
 
+// Configuração do CORS
+const whitelist = ["http://localhost:3000", "https://vercel.com"];
+const corsOptions: cors.CorsOptions = {
+  origin: (origin, callback) => {
+    if (origin && whitelist.includes(origin)) {
+      callback(null, true);
+    } else callback(new Error("Not allowed by CORS"));
+  },
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use("/", funcionario_route);
 
