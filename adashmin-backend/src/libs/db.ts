@@ -1,6 +1,9 @@
+/**
+ * Arquivo de conexão com o banco de dados usando Mongoose
+ */
 import mongoose from "mongoose";
 
-main().catch((err) => console.log(err));
+main();
 
 async function main() {
   const uri = `${process.env.DB_SERVER}://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}/${process.env.DB_NAME}`;

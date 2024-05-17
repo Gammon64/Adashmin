@@ -1,5 +1,5 @@
 /**
- * Inicializa o servidor Express.Js
+ * Inicializa o servidor Express.Js e conecta ao banco de dados MongoDB pelo Mongoose.
  */
 import app from "./libs/app";
 import "./libs/db";
