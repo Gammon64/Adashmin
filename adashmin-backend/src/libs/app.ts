@@ -12,7 +12,7 @@ const app = express();
 const whitelist = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://vercel.com",
+  "https://adashmin.vercel.app/",
 ];
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
