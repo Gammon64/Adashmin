@@ -21,11 +21,23 @@ const DataTable = ({ data }: { data: Funcionario[] }) => {
   const toast = useToast();
 
   const onDelete = async (id: string) => {
-    toast.promise(deletar(id), {
-      success: { title: "Sucesso!", description: "Funcionário excluído" },
-      error: { title: "Erro!", description: "Funcionário não foi excluído" },
-      loading: { title: "Enviando...", description: "Aguarde um momento" },
-    });
+    deletar(id)
+      .then(() =>
+        toast({
+          title: "Sucesso!",
+          description: "Funcionário excluído",
+          status: "success",
+          isClosable: true,
+        })
+      )
+      .catch((error) =>
+        toast({
+          title: "Erro!",
+          description: error.message,
+          status: "error",
+          isClosable: true,
+        })
+      );
   };
 
   /**

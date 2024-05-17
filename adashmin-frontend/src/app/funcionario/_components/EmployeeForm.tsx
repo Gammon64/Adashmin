@@ -28,11 +28,23 @@ const EmployeeForm = ({ funcionario }: { funcionario?: Funcionario }) => {
     event.preventDefault();
     // O HandleSubmit do React-Hook-Form valida os valores do formulário e retorna-os em um objeto data
     handleSubmit((data) => {
-      toast.promise(salvar(data, funcionario?._id), {
-        success: { title: "Sucesso!", description: "Funcionário salvo" },
-        error: { title: "Erro!", description: "Funcionário não foi salvo" },
-        loading: { title: "Enviando...", description: "Aguarde um momento" },
-      });
+      salvar(data, funcionario?._id)
+        .then(() =>
+          toast({
+            title: "Sucesso!",
+            description: "Funcionário salvo",
+            status: "success",
+            isClosable: true,
+          })
+        )
+        .catch((error) =>
+          toast({
+            title: "Erro!",
+            description: error.message,
+            status: "error",
+            isClosable: true,
+          })
+        );
     })();
   };
 
