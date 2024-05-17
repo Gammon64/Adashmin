@@ -79,3 +79,17 @@ bun [comando]
 ### Acesso
 
 Após iniciar o projeto acesse seu [ambiente local](http://localhost:3000) para visualizar.
+
+# Ambientes em produção
+
+Ambos ambientes se encontram hospedados em núvem, usando planos gratuitos.
+
+O backend se encontra hospedado na [Render](https://render.com/) e ouvindo requisições através do endereço:
+
+[`https://adashmin.onrender.com`](https://adashmin.onrender.com)
+
+> **AVISO:** Por se tratar de uma instancia gratuita, ela ficará inativa quando não houver requisições, o que pode atrasar as solicitações em 50 segundos ou mais.
+
+Quanto ao frontend, está hospedado na [Vercel](https://vercel.com/) e pode ser visualizado no endereço:
+
+[`https://adashmin.vercel.app/`](https://adashmin.vercel.app/)

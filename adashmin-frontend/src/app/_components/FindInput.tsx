@@ -13,7 +13,7 @@ const FindInput = ({ query }: { query: string | undefined }) => {
   const { register, reset } = useForm();
   useEffect(() => {
     if (query) reset({ query });
-  }, [query]);
+  }, [query, reset]);
   return (
     <div style={{ display: "flex" }}>
       <form>
