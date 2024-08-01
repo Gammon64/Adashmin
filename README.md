@@ -15,11 +15,7 @@ A versão em produção está acessando um servidor hospedado pelo MongoDB Atlas
 Em vista de testes locais, assegure-se de que tenha uma instância do MongoDB sendo executada, caso não houver, o [site oficial](https://www.mongodb.com/pt-br) oferece algumas opções, escolha a que melhor te atender, crie no projeto um arquivo `.env` ou `.env.development.local` com as seguintes variáveis, substituindo com os seus valores:
 
 ```Basic
-DB_SERVER="mongodb ou mongodb+srv"
-DB_USER="usuario"
-DB_PASS="senha"
-DB_URL="127.0.0.1 ou cluster*.*******.mongodb.net"
-DB_NAME="adashmin"
+MONGODB_URI="[mongodb ou mongodb+srv]/[usuario]:[senha]@[127.0.0.1 ou cluster*.*******.mongodb.net]/[adashmin]"
 ```
 
 ### Pronto para rodar
@@ -44,11 +40,11 @@ bun [comando]
 
 ## Endpoints disponíveis
 
-- `/api/funcionarios`: Retorna todos os funcionários cadastrados.
-- `/api/funcionarios/:id`: Retorna as informações de um funcionário específico com base no ID fornecido.
-- `/api/funcionarios`: Cria um novo funcionário com base nos dados fornecidos no corpo da requisição.
-- `/api/funcionarios/:id`: Atualiza as informações de um funcionário específico com base no ID fornecido e nos dados fornecidos no corpo da requisição.
-- `/api/funcionarios/:id`: Exclui um funcionário específico com base no ID fornecido.
+- **GET:** `/api/funcionarios`: Retorna todos os funcionários cadastrados.
+- **GET:** `/api/funcionarios/:id`: Retorna as informações de um funcionário específico com base no ID fornecido.
+- **POST:** `/api/funcionarios`: Cria um novo funcionário com base nos dados fornecidos no corpo da requisição.
+- **PATCH:** `/api/funcionarios/:id`: Atualiza as informações de um funcionário específico com base no ID fornecido e nos dados fornecidos no corpo da requisição.
+- **DELETE:** `/api/funcionarios/:id`: Exclui um funcionário específico com base no ID fornecido.
 
 # Frontend:
 
@@ -81,6 +77,8 @@ bun [comando]
 Após iniciar o projeto acesse seu [ambiente local](http://localhost:3000) para visualizar.
 
 # Ambientes em produção
+
+> **AVISO:** Os ambientes foram desativados e não estão mais disponíveis. Essa sessão foi mantida apenas para informar como foi feito.
 
 Ambos ambientes se encontram hospedados em núvem, usando planos gratuitos.
 
