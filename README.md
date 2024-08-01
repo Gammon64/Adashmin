@@ -1,6 +1,8 @@
 # Adashmin
 
-Boas vindas ao Adashmin! Projeto fullstack de gerenciamento de funcionários.
+### Boas vindas ao Adashmin!
+
+Projeto fullstack de gerenciamento de funcionários usando NestJs como framework NodeJs no backend, e NextJs como framework React no frontend.
 
 # Como iniciar
 
