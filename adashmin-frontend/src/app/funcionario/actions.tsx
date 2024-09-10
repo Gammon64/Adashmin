@@ -11,7 +11,7 @@ import { revalidatePath } from "next/cache";
 export const buscar = async (query?: string) => {
   // Faz a requisição para o backend, passando a query como parâmetro se existir
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/employees${
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/funcionario${
       query ? "?query=" + query : ""
     }`,
     {
@@ -28,7 +28,7 @@ export const buscar = async (query?: string) => {
 
 export const salvar = async (data: any, id?: string) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/employees/${id ?? ""}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/funcionario/${id ?? ""}`,
     {
       method: id ? "PUT" : "POST",
       headers: {
@@ -48,7 +48,7 @@ export const salvar = async (data: any, id?: string) => {
 };
 
 export const deletar = async (id: string) => {
-  await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/employees/" + id, {
+  await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/funcionario/" + id, {
     method: "DELETE",
   });
 
