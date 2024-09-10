@@ -7,7 +7,7 @@ const Error = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        paddingTop: "164px",
       }}
     >
       Desculpa, algo deu errado 😢
