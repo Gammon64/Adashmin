@@ -1,17 +1,15 @@
-"use client";
-
-import { Link } from "@chakra-ui/next-js";
+import Link from "next/link";
 
 const HomeButton = () => {
   return (
     <Link
       href="/"
-      colorScheme="purple"
       style={{
         fontSize: "1.5rem",
         fontWeight: "bold",
         padding: "0.5rem",
         textDecoration: "none",
+        color: "#007070",
       }}
     >
       Adashmin
