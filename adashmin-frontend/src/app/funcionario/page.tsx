@@ -1,7 +1,7 @@
-import EmployeeForm from "./_components/EmployeeForm";
+import FuncionarioForm from "./_components/FuncionarioForm";
 
 const CadastroFuncionario = () => {
-  return <EmployeeForm />;
+  return <FuncionarioForm />;
 };
 
 export default CadastroFuncionario;
