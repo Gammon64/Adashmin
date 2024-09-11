@@ -9,9 +9,6 @@ import { Types } from 'mongoose';
   timestamps: true,
 })
 export class Funcionario {
-  @Prop({ type: Types.ObjectId })
-  id: string;
-
   @Prop({ required: true })
   nome: string;
 
