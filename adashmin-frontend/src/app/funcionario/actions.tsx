@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { buildFuncionario } from "../_types/funcionario";
 
 /**
  * Lista todos os funcionários.
@@ -14,9 +15,7 @@ export const buscar = async (query?: string) => {
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/funcionario${
       query ? "?query=" + query : ""
     }`,
-    {
-      method: "GET",
-    }
+    { method: "GET" }
   );
 
   if (!res.ok) {
@@ -26,11 +25,24 @@ export const buscar = async (query?: string) => {
   return res.json();
 };
 
+export const buscarUm = async (id: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/funcionario/${id}`,
+    { method: "GET" }
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const funcionario = buildFuncionario(await res.json());
+  return funcionario;
+};
+
 export const salvar = async (data: any, id?: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/funcionario/${id ?? ""}`,
     {
-      method: id ? "PUT" : "POST",
+      method: id ? "PATCH" : "POST",
       headers: {
         "Content-Type": "application/json",
       },
