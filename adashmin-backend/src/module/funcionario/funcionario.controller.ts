@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { FuncionarioDto } from './dto/funcionario.dto';
 import { FuncionarioService } from './funcionario.service';
@@ -20,8 +21,8 @@ export class FuncionarioController {
   }
 
   @Get()
-  findAll() {
-    return this.funcionarioService.findAll();
+  findAll(@Query('query') query?: string) {
+    return this.funcionarioService.findAll(query);
   }
 
   @Get(':id')

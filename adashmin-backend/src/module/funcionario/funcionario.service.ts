@@ -15,8 +15,17 @@ export class FuncionarioService {
     return this.funcionarioModel.create(createFuncionarioDto);
   }
 
-  findAll() {
-    return this.funcionarioModel.find();
+  findAll(query?: string) {
+    // Busca se contém o texto em nome, cargo ou departamento.
+    const filter = {
+      $or: [
+        { nome: { $regex: query, $options: 'i' } },
+        { cargo: { $regex: query, $options: 'i' } },
+        { departamento: { $regex: query, $options: 'i' } },
+      ],
+    };
+    // Se query não for indefinida, aplico o filtro, se não, retorno todos os funcionários
+    return this.funcionarioModel.find(query ? filter : {});
   }
 
   findOne(id: string) {
