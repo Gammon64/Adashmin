@@ -1,5 +1,5 @@
 import FindInput from "@/_components/FindInput";
-import ListEmployee from "@/_components/FuncionarioLista";
+import FuncionarioLista from "@/_components/FuncionarioLista";
 import NewButton from "@/_components/NewButton";
 import style from "./page.module.css";
 
@@ -16,7 +16,7 @@ export default function Home({
         <FindInput />
       </section>
       <section>
-        <ListEmployee query={searchParams?.query} />
+        <FuncionarioLista query={searchParams?.query} />
       </section>
     </main>
   );

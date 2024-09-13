@@ -97,8 +97,8 @@ const FuncionarioForm = ({ funcionario }: { funcionario?: Funcionario }) => {
           gap: "1rem",
         }}
       >
-        <Link href="/" className={styles.cancel}>
-          Cancelar
+        <Link href="/">
+          <button className={styles.cancel}>Cancelar</button>
         </Link>
         <button className={styles.submit} type="submit">
           Salvar

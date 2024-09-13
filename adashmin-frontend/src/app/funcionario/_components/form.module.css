@@ -11,19 +11,15 @@
 }
 
 .form input {
-  padding: 0.5rem;
+  padding: 0.7rem;
   border: 1px solid #ccc;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 .cancel {
   background-color: #d32266;
-  color: #fff;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
 }
 
 .submit {
-  font-weight: bold;
-  padding: 0.5rem;
+  color: #424242;
 }
