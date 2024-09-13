@@ -1,0 +1,26 @@
+services:
+  backend:
+    container_name: adashminbackend
+    restart: always
+    build: ./adashmin-backend
+    ports:
+      - 3000:3000
+    external_links:
+      - adashmindb
+  mongo:
+    container_name: adashmindb
+    image: mongo
+    restart: always
+    env_file:
+      - mongo.env
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    env_file:
+      - mongo-exp.env
