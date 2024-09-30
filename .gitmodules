@@ -1,0 +1,8 @@
+[submodule "adashmin-web"]
+	path = adashmin-web
+	url = https://github.com/Gammon64/adashmin-web.git
+	branch = main
+[submodule "adashmin-api"]
+	path = adashmin-api
+	url = https://github.com/Gammon64/adashmin-api.git
+	branch = main
