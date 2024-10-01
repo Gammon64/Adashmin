@@ -1,8 +1,8 @@
 services:
-  backend:
-    container_name: adashminbackend
+  api:
+    container_name: adashminapi
     restart: always
-    build: ./adashmin-backend
+    build: ./adashmin-api
     ports:
       - 3000:3000
     external_links:
