@@ -4,7 +4,7 @@ services:
     restart: always
     build: ./adashmin-api
     ports:
-      - 3000:3000
+      - 3004:3004
     external_links:
       - adashmindb
   mongo:

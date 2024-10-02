@@ -8,7 +8,7 @@ Projeto fullstack de gerenciamento de funcionários usando NestJs como framework
 
 ## Backend:
 
-Após clonar o projeto, acesse pelo terminal a pasta `./adashmin-backend` e execute o comando `npm install` para instalar as dependências do projeto.
+Após clonar o projeto, acesse pelo terminal a pasta `./adashmin-api` e execute o comando `npm install` para instalar as dependências do projeto.
 
 ### MongoDB
 
